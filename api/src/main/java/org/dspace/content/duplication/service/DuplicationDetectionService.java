@@ -28,7 +28,7 @@ public interface DuplicationDetectionService
      * @param context DSpace's context object
      * @param item The item for which we search for duplicates.
      * @return An empty list or a list of items the user is allowed to see that are possible duplicates of the item provided.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public List<Item> detectDuplicateReadableItems(Context context, Item item)
             throws SQLException;
@@ -40,7 +40,7 @@ public interface DuplicationDetectionService
      * @param field The metadata field we should compare
      * @param item The item for which we search for duplicates.
      * @return An empty list or a list of items the user is allowed to see that are possible duplicates of the item provided.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public List<Item> detectDuplicateReadableItems(Context context, MetadataField field, Item item)
             throws SQLException;
@@ -61,7 +61,7 @@ public interface DuplicationDetectionService
      * @param item The item for which we search for duplicates.
      * @param maxDistance The maximum edit distance used by the levenshtein algorithm while performing the search.
      * @return An empty list or a list of items the user is allowed to see that are possible duplicates of the item provided.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public List<Item> detectDuplicateReadableItems(Context context, MetadataField field, Item item, int maxDistance)
             throws SQLException;
@@ -73,7 +73,7 @@ public interface DuplicationDetectionService
      * @param value The pattern to which the edit distance is calculated by the search.
      * @return An Item iterator that contains items whose metadata field value has an edit distance to the search
      *         pattern less or equal the provided maximum distance.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public Iterator<Item> detectDuplicateItems(Context context, String value)
             throws SQLException;
@@ -86,7 +86,7 @@ public interface DuplicationDetectionService
      * @param value The pattern to which the edit distance is calculated by the search.
      * @return An Item iterator that contains items whose metadata field value has an edit distance to the search
      *         pattern less or equal the provided maximum distance.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public Iterator<Item> detectDuplicateItems(Context context, MetadataField field, String value)
             throws SQLException;
@@ -103,7 +103,7 @@ public interface DuplicationDetectionService
      * @param maxDistance The maximum edit distance used by the levenshtein algorithm while performing the search.
      * @return An Item iterator that contains items whose metadata field value has an edit distance to the search
      *         pattern less or equal the provided maximum distance.
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public Iterator<Item> detectDuplicateItems(Context context, MetadataField field, String value, int maxDistance)
             throws SQLException;

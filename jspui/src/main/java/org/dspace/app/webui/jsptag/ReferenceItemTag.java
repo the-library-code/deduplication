@@ -48,8 +48,8 @@ public class ReferenceItemTag extends TagSupport
 
     /**
      * Gather all metadata needed for the citation and create the button / link to open the referenced item.
-     * @return
-     * @throws JspException
+     * @return SKIP_BODY
+     * @throws JspException if an error occurs while processing this tag
      */
     @Override
     public int doStartTag() throws JspException

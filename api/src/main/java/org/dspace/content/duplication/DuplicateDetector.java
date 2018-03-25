@@ -61,7 +61,7 @@ public class DuplicateDetector
 
     /**
      * Initialize the Duplicate Detector and trigger parsing and running the command
-     * @param args
+     * @param args Command Line arguments
      */
     public static void main(String args[])
     {
@@ -84,6 +84,10 @@ public class DuplicateDetector
 
     /**
      * Parse the command line and actually run the command
+     *
+     * @param args Command Line arguments
+     * @param context DSpace context
+     * @param detector Initialized Detector class
      */
     public void runCLI(Context context, String args[], DuplicateDetector detector)
     {

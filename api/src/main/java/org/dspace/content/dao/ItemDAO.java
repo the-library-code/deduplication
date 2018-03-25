@@ -127,7 +127,7 @@ public interface ItemDAO extends DSpaceObjectLegacySupportDAO<Item>
      * @param value The value to compare the field values to.
      * @param maxDistance The maximum number of allowed changes (see the Levenshtein algorihm for details)
      * @return iterator over items matching the fuzzy search
-     * @throws SQLException
+     * @throws SQLException If the database does funky things.
      */
     public Iterator<Item> detectDuplicateItems(Context context, MetadataField field, String value, int maxDistance) throws SQLException;
 }

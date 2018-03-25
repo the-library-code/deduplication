@@ -168,10 +168,10 @@ public class JSPDuplicateDetectionStep extends JSPStep
      *
      * @param request
      *            The HTTP Request
-     * @param subInfo
-     *            The current submission information object
+     * @param subInfo The current submission information object
      *
      * @return the number of pages in this step
+     * @throws ServletException Won't occur, is just present as the implemented interface contains it.
      */
     public int getNumberOfPages(HttpServletRequest request,
                                 SubmissionInfo subInfo) throws ServletException
