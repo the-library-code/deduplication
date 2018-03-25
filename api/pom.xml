@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+       <groupId>de.the-library-code.dspace</groupId>
+       <artifactId>addon-duplication-detection-service</artifactId>
+       <version>6.2.0-SNAPSHOT</version>
+       <relativePath>../</relativePath>
+   </parent>
+   <groupId>de.the-library-code.dspace</groupId>
+   <artifactId>addon-duplication-detection-service-api</artifactId>
+   <packaging>jar</packaging>
+   <name>DSpace Addon: Duplication Detection Service - API</name>
+
+   <organization>
+      <name>The Library Code GmbH</name>
+      <url>https://www.the-library-code.de</url>
+   </organization>
+
+    <properties>
+        <root.basedir>${basedir}/..</root.basedir>
+    </properties>
+
+      <dependencies>
+         <!-- DSpace core and endorsed Addons -->
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-api</artifactId>
+         </dependency>
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-services</artifactId>
+         </dependency>
+
+         <!-- Third Party Dependencies -->
+         <dependency>
+             <groupId>commons-lang</groupId>
+             <artifactId>commons-lang</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>servlet-api</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>log4j</groupId>
+             <artifactId>log4j</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>jcl-over-slf4j</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-api</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-jdk14</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+         </dependency>
+      </dependencies>
+</project>

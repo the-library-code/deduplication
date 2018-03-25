@@ -1,0 +1,15 @@
+## Ignore the MVN compiled output directories from version tracking
+target/
+
+## Ignore tags index files created by Exuberant Ctags
+tags
+
+## Ignore project files created by IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+overlays/
+
+##Mac noise
+.DS_Store

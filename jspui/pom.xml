@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+       <groupId>de.the-library-code.dspace</groupId>
+       <artifactId>addon-duplication-detection-service</artifactId>
+       <version>6.2.0-SNAPSHOT</version>
+       <relativePath>../</relativePath>
+   </parent>
+   <groupId>de.the-library-code.dspace</groupId>
+   <artifactId>addon-duplication-detection-service-jspui</artifactId>
+   <packaging>war</packaging>
+   <name>DSpace Addon: Duplication Detection Service - JSPUI</name>
+
+   <organization>
+      <name>The Library Code GmbH</name>
+      <url>https://www.the-library-code.de</url>
+   </organization>
+
+    <properties>
+        <root.basedir>${basedir}/..</root.basedir>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <attachClasses>true</attachClasses>
+                    <!-- In version 2.1-alpha-1, this was incorrectly named warSourceExcludes -->
+                    <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+                    <warSourceExcludes>WEB-INF/lib/*.jar</warSourceExcludes>
+                    <!-- Filter the web.xml (needed for IDE compatibility/debugging) -->
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <!--Exclude license check for JSPUI files which don't need it-->
+                    <excludes>
+                        <exclude>**/META-INF/**</exclude>
+                        <exclude>**/fmt.tld</exclude>
+                        <exclude>**/robots.txt</exclude>
+                        <exclude>**/readme*</exclude>
+                        <exclude>**/scriptaculous/**</exclude>
+                        <exclude>**/jquery*</exclude>
+                        <exclude>**/bootstrap/**</exclude>
+                        <exclude>**/fonts/**</exclude>
+                        <exclude>**/resumable.js</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+   <!--
+      Dependency management provides a means to control which
+      versions of dependency jars are used for compilation
+      and packaging into the distribution.  Rather than placing
+      a version in your dependencies, look here first to see if
+      its already strongly defined in dspace-parent and dspace-api.
+   -->
+      <dependencies>
+         <!-- DSpace core and endorsed Addons -->
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-api</artifactId>
+         </dependency>
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-jspui</artifactId>
+            <type>jar</type>
+            <classifier>classes</classifier>
+         </dependency>
+         <!-- This is probably not needed as it will be included in the main installation.
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-jspui</artifactId>
+            <version>5.8</version>
+            <type>war</type>
+         </dependency>
+         -->
+         <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-services</artifactId>
+         </dependency>
+
+         <dependency>
+             <groupId>de.the-library-code.dspace</groupId>
+             <artifactId>addon-duplication-detection-service-api</artifactId>
+             <version>${project.version}</version>
+         </dependency>
+
+         <!-- Third Party Dependencies -->
+         <dependency>
+             <groupId>commons-lang</groupId>
+             <artifactId>commons-lang</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>servlet-api</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>jstl</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>taglibs</groupId>
+             <artifactId>standard</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>jsp-api</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>log4j</groupId>
+             <artifactId>log4j</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>jcl-over-slf4j</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-api</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-jdk14</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+         </dependency>
+      </dependencies>
+</project>
