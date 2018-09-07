@@ -4,7 +4,7 @@
    <groupId>de.the-library-code.dspace</groupId>
    <artifactId>addon-duplication-detection-service</artifactId>
    <packaging>pom</packaging>
-   <version>6.2.0</version>
+   <version>6.2.1-SNAPSHOT</version>
    <name>DSpace Addon: Duplication Detection Service</name>
    <description>
    	Addon for DSpace to include a title based duplication detection service into submission and workflow of DSpace.
@@ -39,7 +39,7 @@
         <connection>scm:git:git@github.com:the-library-code/deduplication.git</connection>
         <developerConnection>scm:git:git@github.com:the-library-code/deduplication.git</developerConnection>
         <url>git@github.com:the-library-code/deduplication.git</url>
-        <tag>duplication-detection-service-6.2.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>

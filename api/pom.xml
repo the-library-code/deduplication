@@ -4,7 +4,7 @@
    <parent>
        <groupId>de.the-library-code.dspace</groupId>
        <artifactId>addon-duplication-detection-service</artifactId>
-       <version>6.2.0</version>
+       <version>6.2.1-SNAPSHOT</version>
        <relativePath>../</relativePath>
    </parent>
    <groupId>de.the-library-code.dspace</groupId>
