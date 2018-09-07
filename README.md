@@ -4,9 +4,9 @@
 
 [![DSpace Logo](dspace_logo.png)](http://www.dspace.org)
 
-# Duplication Detection Service for DSpace 6.2 (JSPUI)
+# Duplication Detection Service for DSpace 6.3 (JSPUI)
 
-This extension to [DSpace](http://www.dspace.org) was developed by [The Library Code GmbH](https://www.the-library-code.de) with the support of [Zürcher Hochschule für Angewandte Wissenschaften](https://www.zhaw.ch). It extends DSpace 6.2 JSPUI by an duplication detection.
+This extension to [DSpace](http://www.dspace.org) was developed by [The Library Code GmbH](https://www.the-library-code.de) with the support of [Zürcher Hochschule für Angewandte Wissenschaften](https://www.zhaw.ch). It extends DSpace 6.3 JSPUI by an duplication detection.
 
 Enduring the submission, a user should get notified if an item with a similar title is already archived in the repository. The possible duplicates are presented to the user who can decide to remove his/her submission, to decide later about the possible duplicates or to continue the submission nevertheless. This duplication detection should run as early as possible to avoid a lot of work while entering metadata to the submission form.
 
@@ -20,13 +20,13 @@ Possible duplicates are listed in a simple citation style containing the names o
 
 ## Prerequisites
 
-In its current form the Duplication Detection Service is developed for DSpace 6.2, JSPUI and PostgreSQL only. Neither XMLUI nor Oracle are supported currently. Why it was **not** tested, it probably will work on newer versions of DSpace 6 as well. It probably won't work without further development on DSpace 7 and above. If you need support to develop a similar solution for XMLUI, do need support for Oracle or any other version of DSpace, please don't hesitate to contact [The Library Code GmbH](https://www.the-library-code.de).
+In its current form the Duplication Detection Service is developed for DSpace 6.3, JSPUI and PostgreSQL only. Neither XMLUI nor Oracle are supported currently. Why it was **not** tested, it probably will work on newer versions of DSpace 6 as well. It probably won't work without further development on DSpace 7 and above. If you need support to develop a similar solution for XMLUI, do need support for Oracle or any other version of DSpace, please don't hesitate to contact [The Library Code GmbH](https://www.the-library-code.de). A version for DSpace 6.2 is also available in the branch [dspace-6.2-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition).
 
 Besides the prerequisites of DSpace, the Duplication Detection Service requires the PostgreSQL Extension "fuzzystrmatch" which contains an implementation of the Levenshtein algorithm.
 
 ## Branches
 
-We will add one branch per supported version. Currently DSpace 6.2 is the only supported version: [dspace-6.2-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition).
+We will add one branch per supported version. Currently DSpace 6.2 ([dspace-6.2-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition)) and DSpace 6.3 ([dspace-6.3-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition)) are supported.
 
 
 ## Installation
@@ -46,7 +46,7 @@ At the end of the file `[dspace-source]/dspace/modules/additions/pom.xml` you wi
   &lt;dependency&gt;
     &lt;groupId&gt;de.the-library-code.dspace&lt;/groupId&gt;
     &lt;artifactId&gt;addon-duplication-detection-service-api&lt;/artifactId&gt;
-    &lt;version&gt;[6.2.0,6.3.0)&lt;/version&gt;
+    &lt;version&gt;[6.3.0,6.4.0)&lt;/version&gt;
     &lt;type&gt;jar&lt;/type&gt;
   &lt;/dependency&gt;
 </pre>
@@ -67,18 +67,18 @@ At the end of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you will f
   &lt;dependency&gt;
       &lt;groupId&gt;de.the-library-code.dspace&lt;/groupId&gt;
       &lt;artifactId&gt;addon-duplication-detection-service-api&lt;/artifactId&gt;
-      &lt;version&gt;[6.2.0,6.3.0)&lt;/version&gt;
+      &lt;version&gt;[6.3.0,6.4.0)&lt;/version&gt;
       &lt;type&gt;jar&lt;/type&gt;
   &lt;/dependency&gt;
   &lt;dependency&gt;
       &lt;groupId&gt;de.the-library-code.dspace&lt;/groupId&gt;
       &lt;artifactId&gt;addon-duplication-detection-service-jspui&lt;/artifactId&gt;
-      &lt;version&gt;[6.2.0,6.3.0)&lt;/version&gt;
+      &lt;version&gt;[6.3.0,6.4.0)&lt;/version&gt;
       &lt;type&gt;war&lt;/type&gt;
   &lt;/dependency&gt;
 </pre>
 
-Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.2-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`.
+Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.3-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`.
 
 Then change your configuration as described below, re-compile and update DSpace, and restart Tomcat to finish the installtion.
 
@@ -86,7 +86,7 @@ Then change your configuration as described below, re-compile and update DSpace,
 
 Please remind to install the PostgreSQL extension "fuzzystrmatch", as described above.
 
-Copy the files within the directories [jspui/src](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition/jspui/src) and [api/src](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition/api/src) into your overlays (`[dspace-src]/dspace/modules/additions/src/...` and `[dspace-src]/dspace/modules/jspui/src/...`). Please pay attention not to overwrite any locally changed files. Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.2-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`. Change your configuration as described in the following section of this readme, recompile and update DSpace, and restart Tomcat to finish the installation.
+Copy the files within the directories [jspui/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/jspui/src) and [api/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/api/src) into your overlays (`[dspace-src]/dspace/modules/additions/src/...` and `[dspace-src]/dspace/modules/jspui/src/...`). Please pay attention not to overwrite any locally changed files. Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.3-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`. Change your configuration as described in the following section of this readme, recompile and update DSpace, and restart Tomcat to finish the installation.
 
 This add-on added the following files:
 
