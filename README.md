@@ -55,9 +55,9 @@ At the middle of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you wil
 
 <pre>
   &lt;overlay&gt;
-    &lt;groupId&gt;de.the-library-code.dspace&lt;groupId&gt;
-    &lt;artifactId&gt;addon-duplication-detection-service-jspui&lt;artifactId&gt;
-    &lt;type&gt;war&lt;type&gt;
+    &lt;groupId&gt;de.the-library-code.dspace&lt;/groupId&gt;
+    &lt;artifactId&gt;addon-duplication-detection-service-jspui&lt;/artifactId&gt;
+    &lt;type&gt;war&lt;/type&gt;
   &lt;/overlay&gt;
 </pre>
 
