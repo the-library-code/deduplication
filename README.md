@@ -51,7 +51,26 @@ At the end of the file `[dspace-source]/dspace/modules/additions/pom.xml` you wi
   &lt;/dependency&gt;
 </pre>
 
-At the middle of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you will find a section that configures the `maven-war-plugin`. The section starts with an empty tag `<overlay />`, followed by a second section `<overlay>...</overlay>`. Between those two sections, you have to add third one, looking like the following lines:
+You have to make three changes to the file `[dspace-source]/dspace/modules/jspui/pom.xml`. The xml file contains several sections, you will have to change the sections `<build><plugins>...</plugins></build>` and the section `<dependencies>...</dependencies>`. In the plugin section several plugins are defined and configured. The configuration of the maven-dependency-plugin contains the tags `<includeGroupIds>` and `<includeArtifactIds>`. You have to add `de.the-library-code.dspace` to the group ids and `addon-duplication-detection-service-api` to the artifact ids. The whole section should then look like the following:
+
+```
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <executions>
+      <execution>
+        ...
+        <configuration>
+          <includeGroupIds>org.dspace.modules,de.the-library-code.dspace</includeGroupIds>
+          <includeArtifactIds>additions,addon-duplication-detection-service-api</includeArtifactIds>
+          ...
+        </configuration>
+      </execution>
+    </executions>
+  </plugin>
+```
+
+Then please change the configuration of the maven-war-plugin. It contains a section `<overlays>`, starting with an empty tag `<overlay />`, followed by another section `<overlay>...</overlay>`. You have to add another section between the empty tag and the existing `<overlay>`-section. Please add the following section:
 
 <pre>
   &lt;overlay&gt;
@@ -60,6 +79,24 @@ At the middle of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you wil
     &lt;type&gt;war&lt;/type&gt;
   &lt;/overlay&gt;
 </pre>
+
+The whole `<overlays>`-section should then look like:
+
+```
+  <overlays>
+    <overlay />
+     <overlay>
+       <groupId>de.the-library-code.dspace</groupId>
+       <artifactId>addon-duplication-detection-service-jspui</artifactId>
+       <type>war</type>
+     </overlay>
+     <overlay>
+       <groupId>org.dspace</groupId>
+       <artifactId>dspace-jspui</artifactId>
+       <type>war</type>
+     </overlay>
+   </overlays>
+```
 
 At the end of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you will find a section `<dependencies>...</dependencies>`. At the end of this section, right before the closing tag, you need to add the following lines:
 
