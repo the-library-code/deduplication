@@ -170,7 +170,7 @@ The Submission workflow needs some additional configuration. One part of the Dup
 [...]
 ```
 
-Reference the step as `<step id="duplicate-detection" />` in the step definitions, wherever you want to activate it. We suggest activating it before the `DescribeStep` as the duplication detection aims to prevent users from unnecessarily typing metadata of items that are already part of the repository. Following this advice it will probably be the first step or the step after the StartSubmissionLookupStep. See the [DSpace manual](https://wiki.duraspace.org/display/DSDOC6x/Submission+User+Interface) if you have further questions regarding the `item-submission.xml`.
+Reference the step as `<step id="duplicate-detection" />` in the submission definitions, wherever you want to activate it. We suggest activating it before the `DescribeStep` as the duplication detection aims to prevent users from unnecessarily typing metadata of items that are already part of the repository. Following this advice it will probably be the first step or the step after the StartSubmissionLookupStep. See the [DSpace manual](https://wiki.duraspace.org/display/DSDOC6x/Submission+User+Interface) if you have further questions regarding the `item-submission.xml`.
 
 As the Duplication Detection Step requires the user to enter the title the visibility of the title's metadata field should be set to workflow in `input-forms.xml`. This prevents the field from being shown twice in the submission process while it is still being editable in the workflow step. See the [DSpace manual](https://wiki.duraspace.org/display/DSDOC6x/Submission+User+Interface) if you need further guidance on how to achieve that.
 
