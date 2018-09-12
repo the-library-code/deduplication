@@ -6,7 +6,7 @@
 
 # Duplicate Detection Service for DSpace 6 (JSPUI)
 
-This is an addition to [DSpace](http://www.dspace.org) (on github [@DSpace/DSpace](https://github.com/DSpace/DSpace)) that provides a simple duplicate detection service. It currently supports DSpace's JSPUI in version 6.2 and 6.3, but it should be simple to be ported to XMLUI or future versions of DSpace 6. If you need help porting it, please don't hesitate to contact [The Library Code](https://www.the-library-code.de).
+This is an addition to [DSpace](http://www.dspace.org) (on github [@DSpace/DSpace](https://github.com/DSpace/DSpace)) that provides a simple duplicate detection service. It currently supports DSpace's JSPUI in version 6.2 and 6.3, but it should be simple to port to XMLUI or future versions of DSpace 6. If you need help porting it, please don't hesitate to contact [The Library Code](https://www.the-library-code.de).
 
 
 ## Contributors and License
