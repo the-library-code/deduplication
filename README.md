@@ -11,7 +11,7 @@ This is an addition to [DSpace](http://www.dspace.org) (on github [@DSpace/DSpac
 
 ## Contributors and License
 
-DSpace source code is freely available under a standard [BSD 3-Clause license](https://opensource.org/licenses/BSD-3-Clause), so is the source code of this addon. The full license is available at http://www.dspace.org/license/.
+DSpace source code is freely available under a standard [BSD 3-Clause license](https://opensource.org/licenses/BSD-3-Clause), as is the source code of this addon. The full license is available at http://www.dspace.org/license/.
 
 This addon was developed by [The Library Code](https://www.the-library-code.de) with the support of [Zürcher Hochschule für Angewandte Wissenschaften](https://www.zhaw.ch).
 
