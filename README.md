@@ -4,25 +4,25 @@
 
 [![DSpace Logo](dspace_logo.png)](http://www.dspace.org)
 
-# Duplication Detection Service for DSpace 6.3 (JSPUI)
+# Duplicate Detection Service for DSpace 6.3 (JSPUI)
 
-This extension to [DSpace](http://www.dspace.org) was developed by [The Library Code GmbH](https://www.the-library-code.de) with the support of [Zürcher Hochschule für Angewandte Wissenschaften](https://www.zhaw.ch). It extends DSpace 6.3 JSPUI by an duplication detection.
+This extension to [DSpace](http://www.dspace.org) was developed by [The Library Code GmbH](https://www.the-library-code.de) with the support of [Zürcher Hochschule für Angewandte Wissenschaften](https://www.zhaw.ch). It extends DSpace 6.3 JSPUI by providing duplicate detection.
 
-Enduring the submission, a user should get notified if an item with a similar title is already archived in the repository. The possible duplicates are presented to the user who can decide to remove his/her submission, to decide later about the possible duplicates or to continue the submission nevertheless. This duplication detection should run as early as possible to avoid a lot of work while entering metadata to the submission form.
+During the submission, a user should get notified if an item with a similar title is already archived in the repository. The possible duplicates are presented to the user, who can then decide to remove their submission, to decide later about the possible duplicates or to continue the submission. This duplicate detection should run as early as possible to avoid a lot of work while entering metadata to the submission form.
 
-Enduring the workflow step a reviewer is warned if items with a similar title are detected in the repository. The warning gets displayed on the page on which the reviewer decides whether to accept or decline a submission to the repository. A note will be displayed if no duplicates were found.
+During the workflow step a reviewer is warned if items with a similar title are detected in the repository. The warning is displayed on the page on which the reviewer decides whether to accept or decline a submission to the repository. A note will be displayed if no duplicates were found.
 
-The Duplication Detection Service looks for items with similar titles. To find items that have similar but not totally equal names, fuzzy search is used. The Levenshtein algorithm performs these searches. It calculates a measure called edit difference. The edit difference counts how many characters have to be deleted, swapped or changed to transform one string into another one. By default, the Duplication Detection Service considers two items as similar if the edit distance between there title does not exceeds 8 changes. This is configurable (see below).
+The Duplicate Detection Service looks for items with similar titles. To find items that have similar but not totally equal names, fuzzy search is used. The Levenshtein algorithm performs these searches. It calculates a measure called edit difference. The edit difference counts how many characters have to be deleted, swapped or changed to transform one string into another. By default, the Duplication Detection Service considers two items to be similar if the edit distance between their title does not exceed 8 changes. This is configurable (see below).
 
-The Duplicates Detection Service does not show possible duplicates if a user does not own the permissions to see these items. Only the items that are readable for the current user will be considered as possible duplicates. Unfinished submissions (so called workspace items) and other versions of the item being submitted will never be considered a possible duplicate. If a user is able to review items in the workflow process also workflow items with similar titles will be presented as possible duplicates. If a user is able to administrate withdrawn items those will be considered too.
+The Duplicate Detection Service does not show possible duplicates if a user does not have permission to see the items. Only the items that are readable for the current user will be considered as possible duplicates. Unfinished submissions (workspace items) and other versions of the item being submitted will never be considered a possible duplicate. If a user has permission to review items in the workflow process, then workflow items with similar titles will be presented as possible duplicates. If a user is able to administer withdrawn items, these will be considered too.
 
 Possible duplicates are listed in a simple citation style containing the names of the first two authors, the title, the year, the publisher name and place and a link to the item. The citation style cannot be changed by configuration currently.
 
 ## Prerequisites
 
-In its current form the Duplication Detection Service is developed for DSpace 6.3, JSPUI and PostgreSQL only. Neither XMLUI nor Oracle are supported currently. Why it was **not** tested, it probably will work on newer versions of DSpace 6 as well. It probably won't work without further development on DSpace 7 and above. If you need support to develop a similar solution for XMLUI, do need support for Oracle or any other version of DSpace, please don't hesitate to contact [The Library Code GmbH](https://www.the-library-code.de). A version for DSpace 6.2 is also available in the branch [dspace-6.2-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition).
+In its current form, the Duplication Detection Service is developed for DSpace 6.3, JSPUI and PostgreSQL only. Neither XMLUI nor Oracle are currently supported. While it was **not** tested, it probably will work on newer versions of DSpace 6 as well. It probably won't work without further development on DSpace 7 and above. If you need support to develop a similar solution for XMLUI, support for Oracle or any other version of DSpace, please don't hesitate to contact [The Library Code GmbH](https://www.the-library-code.de). A version for DSpace 6.2 is also available in the branch [dspace-6.2-addition](https://github.com/the-library-code/deduplication/tree/dspace-6.2-addition).
 
-Besides the prerequisites of DSpace, the Duplication Detection Service requires the PostgreSQL Extension "fuzzystrmatch" which contains an implementation of the Levenshtein algorithm.
+Besides the prerequisites of DSpace, the Duplicate Detection Service requires the PostgreSQL Extension "fuzzystrmatch" which contains an implementation of the Levenshtein algorithm.
 
 ## Branches
 
@@ -37,7 +37,7 @@ Furthermore, you will need to know how to compile and update DSpace. There are t
 
 ### Install the add-on by changing two poms and the message catalog
 
-Please remind to install the PostgreSQL extension "fuzzystrmatch", as described above.
+Please remember to install the PostgreSQL extension "fuzzystrmatch", as described above.
 To install this add-on using maven's capability to automatically download and include all necessary files, you need to change two pom files and the message catalog.
 
 At the end of the file `[dspace-source]/dspace/modules/additions/pom.xml` you will find a section `<dependencies>...</dependencies>`. At the end of this section, right before the closing tag, you need to add the following lines:
@@ -51,7 +51,7 @@ At the end of the file `[dspace-source]/dspace/modules/additions/pom.xml` you wi
   &lt;/dependency&gt;
 </pre>
 
-You have to make three changes to the file `[dspace-source]/dspace/modules/jspui/pom.xml`. The xml file contains several sections, you will have to change the sections `<build><plugins>...</plugins></build>` and the section `<dependencies>...</dependencies>`. In the plugin section several plugins are defined and configured. The configuration of the maven-dependency-plugin contains the tags `<includeGroupIds>` and `<includeArtifactIds>`. You have to add `de.the-library-code.dspace` to the group ids and `addon-duplication-detection-service-api` to the artifact ids. The whole section should then look like the following:
+You have to make three changes to the file `[dspace-source]/dspace/modules/jspui/pom.xml`. The xml file contains several sections. You will have to change the sections `<build><plugins>...</plugins></build>` and the section `<dependencies>...</dependencies>`. In the plugin section, several plugins are defined and configured. The configuration of the maven-dependency-plugin contains the tags `<includeGroupIds>` and `<includeArtifactIds>`. You have to add `de.the-library-code.dspace` to the group ids and `addon-duplication-detection-service-api` to the artifact ids. The whole section should then look like the following:
 
 ```
   <plugin>
@@ -117,13 +117,13 @@ At the end of the file `[dspace-source]/dspace/modules/jspui/pom.xml` you will f
 
 Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.3-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`.
 
-Then change your configuration as described below, re-compile and update DSpace, and restart Tomcat to finish the installtion.
+Then change your configuration as described below, recompile and update DSpace, and restart Tomcat to finish the installation.
 
 ### Installing the add-on by copying its code into your overlays
 
-Please remind to install the PostgreSQL extension "fuzzystrmatch", as described above.
+Please remember to install the PostgreSQL extension "fuzzystrmatch", as described above.
 
-Copy the files within the directories [jspui/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/jspui/src) and [api/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/api/src) into your overlays (`[dspace-src]/dspace/modules/additions/src/...` and `[dspace-src]/dspace/modules/jspui/src/...`). Please pay attention not to overwrite any locally changed files. Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.3-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`. Change your configuration as described in the following section of this readme, recompile and update DSpace, and restart Tomcat to finish the installation.
+Copy the files within the directories [jspui/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/jspui/src) and [api/src](https://github.com/the-library-code/deduplication/tree/dspace-6.3-addition/api/src) into your overlays (`[dspace-src]/dspace/modules/additions/src/...` and `[dspace-src]/dspace/modules/jspui/src/...`). Please pay attention not to overwrite any locally changed files. Add the content of the file [additional-Messages.properties](https://github.com/the-library-code/deduplication/blob/dspace-6.3-addition/additional-Messages.properties) to your message catalog. Your message catalog is located either under `[dspace-src]/dspace/modules/jspui/src/main/resources/Messages.properties` or `[dspace-src]/dspace-api/src/main/resources/Messages.properties`. Change your configuration as described in the following section of this README, recompile and update DSpace, and restart Tomcat to finish the installation.
 
 This add-on added the following files:
 
