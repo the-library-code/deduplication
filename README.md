@@ -146,8 +146,6 @@ This add-on changed the following files:
  * jspui/src/main/webapp/WEB-INF/dspace-tags.tld
  * jspui/src/main/webapp/mydspace/perform-task.jsp
  * jspui/src/main/webapp/mydspace/preview-task.jsp
-   
-Then change your configuration as described below, re-compile and update DSpace, and restart Tomcat to finish the installtion.
 
 ## Configuration
 
