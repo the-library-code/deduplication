@@ -195,4 +195,4 @@ All changes were applied to maven overlays, so that you can see easily which fil
 This work is licensed under the [DSpace Source Code BSD License](http://www.dspace.org/license/).
 
 ## Further development
-Further development of this extension is currently not planned. If you need help  hanging or enhancing this extension in particular or DSpace in general, please don't hesitate to contact  [The Library Code GmbH](https://www.the-library-code.de).
+Further development of this extension is currently not planned. If you need help changing or enhancing this extension in particular or DSpace in general, please don't hesitate to contact  [The Library Code GmbH](https://www.the-library-code.de).
